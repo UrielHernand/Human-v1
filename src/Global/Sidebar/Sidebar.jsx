@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material';
-import { ArrowBack, Assessment, CalendarToday,   DashboardSharp, MenuOutlined, PeopleAltSharp, Settings, Summarize } from '@mui/icons-material';
+import { AdminPanelSettings, ArrowBack, Assessment, CalendarToday,   DashboardSharp, MenuOutlined, PeopleAltSharp, Settings, Summarize } from '@mui/icons-material';
 
-import "./sidebar.css";
+import "./Sidebar.css";
 import { AdminRoutes } from '../../Models/routes';
 
 const sidebarNavItems = [
@@ -44,6 +44,18 @@ const sidebarNavItems = [
     to : AdminRoutes.CONFIGURACION,
     section : 'configuracion'
 
+  },
+  {
+    display : 'Usuarios',
+    icon : <AdminPanelSettings />,
+    to : AdminRoutes.USUARIOS,
+    section : 'usuarios'
+  },
+  {
+    display : 'pagos',
+    icon : <Assessment />,
+    to : AdminRoutes.PAGOS,
+    section : 'Pagos'
   }
 
 ];
