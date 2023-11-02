@@ -16,11 +16,13 @@
 width: 78px;
 margin: 0%;
 padding: 0%;
+
 }
 
 
 .visible {
   width: 190px; 
+
 }
 
 .sidebar__toggle {
@@ -45,6 +47,7 @@ padding: 0%;
 
 .sidebar__menu__item.active {
   background-color: #f3ebeb;
+  color: #02132c;
 }
 
 .sidebar__menu__item {
@@ -60,7 +63,7 @@ padding: 0%;
 
 }
 .sidebar__menu__item:hover {
-  background-color: #f3ebeb;
+  background-color: #f8f3f3;
   color: #02132c;
   cursor: pointer;
 }
