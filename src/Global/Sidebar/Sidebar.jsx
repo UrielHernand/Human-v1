@@ -88,7 +88,7 @@ const Sidebar = () => {
         style={{ background: '#02132c' }}
       >
         <IconButton onClick={toggleSidebar} style={{ borderRadius: '0', color:'white' }}>
-          {sidebarVisible ? <MenuOutlined /> : <ArrowBack />}
+          {sidebarVisible ? <ArrowBack />  :  <MenuOutlined /> }
         </IconButton>
         <div className={`sidebar__content`}>
           <div className={`${sidebarVisible ? 'sidebar__logo' : 'hiddenLogo'}`}>

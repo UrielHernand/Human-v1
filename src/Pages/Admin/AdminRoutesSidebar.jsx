@@ -12,7 +12,20 @@ import AppBar1 from '../../Components/Graphics/AppBar/AppBar';
 const Sidebar = lazy(() => import('../../Global/Sidebar/Sidebar'));
 
 
-
+const styles = {
+  container: {
+    width: '100%',
+    margin: '0 auto',
+    display: 'flex',
+  },
+  sidebar: {
+    width: '5%', 
+  },
+  content: {
+    flex: '1',
+    padding: '20px',
+  },
+};
 
 export const AdminRoutesSidebar = () => 
 {
@@ -22,15 +35,15 @@ export const AdminRoutesSidebar = () =>
 
   
   
-<Grid container style={{ width: '90%', margin: '0 auto', }}>
-  <Grid item xs={3} style={{ width: '62px', flex: '0 0 auto', }}>
-    <Sidebar style={{ width: '190px', flex: '0 0 auto' }} />
-  </Grid>
-  <Grid item xs style={{ flex: '1', padding: '20px', overflow: 'auto' ,}}>
-    <AppBar1 />
-    <Outlet />
-  </Grid>
-</Grid>
+<Grid container style={styles.container}>
+      <Grid item style={styles.sidebar}>
+        <Sidebar />
+      </Grid>
+      <Grid item style={styles.content}>
+        <AppBar1 />
+        <Outlet />
+      </Grid>
+    </Grid>
 
   
 
