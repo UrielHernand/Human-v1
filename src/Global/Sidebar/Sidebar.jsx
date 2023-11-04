@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
 import {
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-
   IconButton,
 } from '@mui/material';
+
 import {
   DashboardSharp,
   PeopleAltSharp,
@@ -97,7 +98,6 @@ const Sidebar = () => {
             {sidebarNavItems.map((item) => (
               <ListItem
                 key={item.to}
-             
                 component={Link}
                 to={item.to}
                 selected={item.to === activeItem}
