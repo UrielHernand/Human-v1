@@ -20,6 +20,7 @@ const styles = {
   },
   sidebar: {
     width: '5%', 
+    marginLeft: '10px',
   },
   content: {
     flex: '1',
@@ -27,15 +28,22 @@ const styles = {
   },
 };
 
+
+const largeScreenStyles = {
+  sidebar: {
+    width: '11%', 
+  },
+};
+
+
 export const AdminRoutesSidebar = () => 
 {
-  return ( 
-    <>
+  if (window.innerWidth > 1200) {
+    Object.assign(styles.sidebar, largeScreenStyles.sidebar);
+  }
 
-
-  
-  
-<Grid container style={styles.container}>
+  return (
+    <Grid container style={styles.container}>
       <Grid item style={styles.sidebar}>
         <Sidebar />
       </Grid>
@@ -44,13 +52,7 @@ export const AdminRoutesSidebar = () =>
         <Outlet />
       </Grid>
     </Grid>
-
-  
-
-
-
-  </>
-  )
+  );
     
 
 };

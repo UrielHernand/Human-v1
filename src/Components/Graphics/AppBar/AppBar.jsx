@@ -32,18 +32,17 @@ function AppBar1() {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="static" style={{backgroundColor:'white', marginTop:'-2%', marginBottom:'1.5%'}}>
+      <Container maxWidth="xl" style={{background:'white', color:'#55555c', fontWeight:'bold'}}>
         <Toolbar>
-            
-          
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Human Gestion
+          <Typography variant="h6" style={{ flexGrow: 1 , color:'#053987' , fontWeight:'bold'}}>
+            HR
           </Typography>
           {pages.map((page) => (
             <Button
               key={page}
-              color="inherit"
+              style={{ color:'#053987' , fontWeight:'initial', fontSize:'15px'}}
+             
               onClick={handleCloseNavMenu}
             >
               {page}
@@ -51,7 +50,7 @@ function AppBar1() {
           ))}
           <Tooltip title="Configuración">
             <IconButton onClick={handleOpenUserMenu}>
-              <Avatar alt="Usuario" src="/static/images/avatar.jpg" />
+              <Avatar alt="Usuario" src="https://scontent.fpbc1-2.fna.fbcdn.net/v/t39.30808-6/363357995_3588482284752953_3703504409059098083_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=S9TMMAJHNnkAX8fy-BJ&_nc_ht=scontent.fpbc1-2.fna&oh=00_AfDyNWyK5RbAm7AT3b5H3PF-3VX4s-gbk2lxo2UjUZL1kw&oe=654C5FAE" />
             </IconButton>
           </Tooltip>
         </Toolbar>

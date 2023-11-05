@@ -10,7 +10,7 @@ import {
   import AssessmentIcon from "@mui/icons-material/Assessment";
   
   import BarChart from "../../../Components/Graphics/BarChart";
-  
+  import './Dashboard.css'
   const Dashboard = () => {
     // Datos de ejemplo para las estadísticas de empleados
     const employeeStatsData = [
@@ -71,18 +71,15 @@ import {
     
   
     return (
-      <Box m={1}>
+      <Box m={1} >
         {/* HEADER */}
-        <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-          <Typography variant="h4" style={{ color: 'black', marginLeft:'20px', fontStyle:'unset'}}>Dashboard</Typography>
-        </Box>
-  
+      
         {/* Estadísticas de Empleados */}
-        <Grid container spacing={2}>
+        <Grid container spacing={2} >
           {employeeStatsData.map((stat, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Paper elevation={3}>
-                <Box p={2} textAlign="center">
+            <Grid item xs={12} sm={6} md={4} key={index} >
+              <Paper elevation={3} >
+                <Box p={2} textAlign="center" className="tag-dashboard">
                   {stat.icon}
                   <Typography variant="h4" fontWeight="bold">{stat.value}</Typography>
                   <Typography variant="h5">{stat.title}</Typography>
@@ -96,8 +93,8 @@ import {
     <Grid container spacing={3} mt={1}>
         {employeeReviewsData.map((review, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Paper elevation={3}>
-              <Box p={2} textAlign="center">
+            <Paper elevation={3}  className="tag-dashboard">
+              <Box p={2} textAlign="center" >
                 <AssessmentIcon fontSize="large" color="primary" /> 
                 <Typography variant="h4" fontWeight="bold">{review.value}</Typography>
                 <Typography variant="h5">{review.title}</Typography>
@@ -122,7 +119,7 @@ import {
           </Grid>
   
           <Grid item xs={12} md={4}>
-            <Paper elevation={3}>
+            <Paper elevation={3} >
               <Box p={2}>
                 <Typography variant="h6" fontWeight="600">
                   Actividad Reciente

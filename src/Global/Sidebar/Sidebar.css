@@ -1,8 +1,8 @@
 .sidebar {
-  width: 190px;
+  width: 180px;
   height: 100vh; 
-  background-color: #02132c;
-  color: white;
+  background-color: white;
+  color: rgb(109, 108, 108);
   position: fixed;
   top: 0;
   left: 0;
@@ -63,9 +63,19 @@ padding: 0%;
 
 }
 .sidebar__menu__item:hover {
-  background-color: #f8f3f3;
-  color: #02132c;
+  background-color: #02132c;
+  color: white;
   cursor: pointer;
+}
+.sidebar_item_text:hover{
+  color: rgb(241, 241, 241);
+
+}
+.sidebar_item_text{
+  color: #55555c;
+  font-size: 14px;
+  font-weight: 500;
+
 }
 
 

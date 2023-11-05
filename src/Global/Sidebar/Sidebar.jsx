@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import {
@@ -6,7 +6,8 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
-  IconButton,
+  Hidden,
+ // Importa IconButton de Material UI
 } from '@mui/material';
 
 import {
@@ -17,8 +18,6 @@ import {
   Assessment,
   Settings,
   AdminPanelSettings,
-  MenuOutlined,
-  ArrowBack,
 } from '@mui/icons-material';
 
 import "./Sidebar.css";
@@ -69,31 +68,25 @@ const sidebarNavItems = [
 
 const Sidebar = () => {
   const location = useLocation();
-  const [sidebarVisible, setSidebarVisible] = React.useState(true);
-  const [activeItem, setActiveItem] = React.useState('');
+  const [activeItem, setActiveItem] = useState('');
+
 
   useEffect(() => {
     setActiveItem(location.pathname);
   }, [location]);
 
-  const toggleSidebar = () => {
-    setSidebarVisible(!sidebarVisible);
-  };
-
   return (
-    <div style={{ background: '#02132c' }}>
-      <div
-       
-        className={`sidebar ${sidebarVisible ? 'visible' : 'hidden'}`}
-        style={{ background: '#02132c' }}
-      >
-        <IconButton onClick={toggleSidebar} style={{ borderRadius: '0', color:'white' }}>
-          {sidebarVisible ? <ArrowBack />  :  <MenuOutlined /> }
-        </IconButton>
-        <div className={`sidebar__content`}>
-          <div className={`${sidebarVisible ? 'sidebar__logo' : 'hiddenLogo'}`}>
-            <h3>Human Gestion</h3>
+    <Hidden smDown implementation="css"  >
+    <div className="sidebar">
+     
+      
+  
+    
+        <div className="sidebar__content">
+          <div className="sidebar__logo">
+            <h3 style={{ color: '#053987' }}>Human Gestion</h3>
           </div>
+
           <List>
             {sidebarNavItems.map((item) => (
               <ListItem
@@ -106,13 +99,16 @@ const Sidebar = () => {
                 <ListItemIcon className="sidebar_icons" style={{ color: '#0f4391' }}>
                   {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={item.display} className={`${sidebarVisible ? 'sidebar_item_text' : 'hiddenLogo'}`} />
+                <ListItemText primary={item.display} className="sidebar_item_text" />
               </ListItem>
             ))}
           </List>
         </div>
-      </div>
+     
+
+
     </div>
+    </Hidden>
   );
 };
 
