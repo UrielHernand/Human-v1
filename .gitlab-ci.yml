@@ -12,4 +12,4 @@ pages:
     paths:
       - public
   only:
-    - main  # Cambia esto si tu rama principal se llama de otra manera
+    - master  # Cambia esto si tu rama principal se llama de otra manera
