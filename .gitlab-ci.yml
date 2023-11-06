@@ -7,6 +7,7 @@ pages:
   stage: deploy
   script:
     - npm install
+    - npm run build
     - mv build public  # Ajusta "build" a la carpeta de salida de tu proyecto
   artifacts:
     paths:
