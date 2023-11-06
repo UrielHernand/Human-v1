@@ -27,7 +27,7 @@ padding: 0%;
 
 .sidebar__toggle {
   text-align: center;
-  margin: 10px;
+  margin: 7px;
 }
 
 .sidebar__logo {
@@ -40,9 +40,9 @@ padding: 0%;
 }
 
 .sidebar__menu {
-  flex-grow: 1;
+
   overflow-y: auto;
-  padding: 4px;
+  padding: 2px;
 }
 
 .sidebar__menu__item.active {
@@ -51,7 +51,7 @@ padding: 0%;
 }
 
 .sidebar__menu__item {
-  padding: 6px;
+  padding: 0%;
   border-radius: 5px;
   color: #f3ebeb;
   text-decoration: none;
@@ -73,8 +73,8 @@ padding: 0%;
 }
 .sidebar_item_text{
   color: #55555c;
-  font-size: 14px;
-  font-weight: 500;
+  margin-left: -10px;
+  
 
 }
 

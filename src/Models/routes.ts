@@ -8,6 +8,7 @@ export enum AdminRoutes {
     VACACIONES = 'vacaciones',
     ANALISIS = 'analisis',
     PERFIL = 'perfil',
+    DEPARTAMENTOS = 'departamentos',
 
   
 

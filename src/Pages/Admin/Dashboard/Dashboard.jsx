@@ -15,7 +15,7 @@ import {
     // Datos de ejemplo para las estadísticas de empleados
     const employeeStatsData = [
       {
-        title: " Total de  Empleados ",
+        title: " Total de  Empleados Activos",
         value: "120",
         icon: <PeopleIcon fontSize="large" color="primary" />,
       },

@@ -18,6 +18,8 @@ import {
   Assessment,
   Settings,
   AdminPanelSettings,
+  CorporateFare,
+  CalendarMonth,
 } from '@mui/icons-material';
 
 import "./Sidebar.css";
@@ -28,6 +30,12 @@ const sidebarNavItems = [
     display: 'Dashboard',
     icon: <DashboardSharp />,
     to: AdminRoutes.DASHBOARD,
+  },
+  {
+    display :'Departamentos',
+    icon:<CorporateFare/>,
+    to:AdminRoutes.DEPARTAMENTOS,
+
   },
   {
     display: 'Empleados',
@@ -50,11 +58,6 @@ const sidebarNavItems = [
     to: AdminRoutes.ANALISIS,
   },
   {
-    display: 'Configuracion',
-    icon: <Settings />,
-    to: AdminRoutes.CONFIGURACION,
-  },
-  {
     display: 'Usuarios',
     icon: <AdminPanelSettings />,
     to: AdminRoutes.USUARIOS,
@@ -64,6 +67,18 @@ const sidebarNavItems = [
     icon: <Assessment />,
     to: AdminRoutes.PAGOS,
   },
+  {
+    display:'Calendario',
+    icon:<CalendarMonth />,
+    to:AdminRoutes.CALENDARIO,
+    
+  }
+  ,
+  {
+    display: 'Configuracion',
+    icon: <Settings />,
+    to: AdminRoutes.CONFIGURACION,
+  }
 ];
 
 const Sidebar = () => {
