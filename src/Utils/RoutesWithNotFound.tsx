@@ -1,5 +1,6 @@
 import{ Routes, Route} from 'react-router-dom'
 import React from 'react'
+import Admin from '../Pages/Admin/Admin';
 
 
 interface Props {
@@ -11,7 +12,7 @@ export default function RoutesWithNotFound ( { children } : Props) {
   return (       
  <Routes>
           {children}
-          <Route  path ="*" element= {<h1> Página no encontrada </h1>}/>
+          <Route  path ="*" element= {  <Admin></Admin>}/>
  </Routes>
          
     
