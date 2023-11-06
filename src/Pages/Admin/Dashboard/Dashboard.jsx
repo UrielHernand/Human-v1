@@ -9,8 +9,9 @@ import {
   import BeachAccessIcon from "@mui/icons-material/BeachAccess";
   import AssessmentIcon from "@mui/icons-material/Assessment";
   
-  import BarChart from "../../../Components/Graphics/BarChart";
+  
   import './Dashboard.css'
+import { Barchart } from "../../../Components/Graphics";
   const Dashboard = () => {
     // Datos de ejemplo para las estadísticas de empleados
     const employeeStatsData = [
@@ -113,7 +114,7 @@ import {
                   Empleados Activos e Inactivos
                 </Typography>
                
-                <BarChart />
+                <Barchart />
               </Box>
             </Paper>
           </Grid>
