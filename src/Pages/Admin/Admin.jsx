@@ -8,6 +8,7 @@ import { RoutesWithNotFound } from "../../Utils";
 import { AdminRoutesSidebar } from "./AdminRoutesSidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Departamentos from "./Departamentos/Departamentos";
+import Reportes from "./Reportes/Reportes";
 
 
 export default function Admin() {
@@ -20,8 +21,9 @@ export default function Admin() {
             <Route path={AdminRoutes.DASHBOARD} element={<Dashboard></Dashboard> }/>
             <Route path={`${AdminRoutes.ADMIN}/*`} element={<h1>Human Gestion </h1> } ></Route>
             <Route path="*" element={<Navigate to={AdminRoutes.DASHBOARD}/>}/> 
-             <Route path={AdminRoutes.EMPLEADOS} element={<h1>Empleados</h1> }/>
-              <Route path={AdminRoutes.DEPARTAMENTOS} element={<Departamentos></Departamentos> }/>
+            <Route path={AdminRoutes.EMPLEADOS} element={<h1>Empleados</h1> }/>
+            <Route path={AdminRoutes.DEPARTAMENTOS} element={<Departamentos></Departamentos> }/>
+            <Route path={AdminRoutes.REPORTES} element={<Reportes></Reportes> }/>
         </Route>
         
       </RoutesWithNotFound>
