@@ -7,7 +7,7 @@ import Admin from "./Pages/Admin/Admin";
 import { Suspense } from "react";
 import Procces from "./Global/Proccesing/Procces";
 import { Provider } from "react-redux";
-import store from "./Redux/store";
+import { store } from "./Redux/store";
 
 
 
@@ -15,6 +15,7 @@ function App() {
   return (
     <>
       <Suspense fallback={<Procces></Procces>}>
+      
 
        <Provider store={store}>
         <BrowserRouter>
