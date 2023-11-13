@@ -5,11 +5,18 @@ import AdminGuard from "./guards/adminGuard";
 import { AdminRoutes } from "./Models/routes";
 import Admin from "./Pages/Admin/Admin";
 import { Suspense } from "react";
+import Procces from "./Global/Proccesing/Procces";
+import { Provider } from "react-redux";
+import store from "./Redux/store";
+
+
 
 function App() {
   return (
     <>
-      <Suspense fallback={<h1> Cargando..</h1>}>
+      <Suspense fallback={<Procces></Procces>}>
+
+       <Provider store={store}>
         <BrowserRouter>
           <RoutesWithNotFound>
             <Route element={<AdminGuard Validation={true} />}>
@@ -19,6 +26,7 @@ function App() {
             </Route>
           </RoutesWithNotFound>
         </BrowserRouter>
+        </Provider>
       </Suspense>
     </>
   );
