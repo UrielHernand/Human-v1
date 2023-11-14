@@ -1,15 +1,12 @@
 
 import {  Navigate, Route } from "react-router-dom";
-
-
 import { AdminRoutes } from "../../Models/routes";
-
 import { RoutesWithNotFound } from "../../Utils";
 import { AdminRoutesSidebar } from "./AdminRoutesSidebar";
 import Dashboard from "./Dashboard/Dashboard";
 import Departamentos from "./Departamentos/Departamentos";
 import Reportes from "./Reportes/Reportes";
-import Empleados from "./Empleados/Empleados"
+
 import RegistroEmpleados from "./RegistroEmpleados/RegitroEmpleados";
 
 export default function Admin() {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Card,
@@ -9,33 +9,37 @@ import {
   Grid,
   IconButton,
   Typography,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
+
+
 } from "@mui/material";
 import {
+
   AddCircleOutline,
   ArrowBack,
   Delete,
   Description,
   Edit,
   Email,
-  LocationOn,
+
+
+
+
   Phone,
-  WarningAmberOutlined,
+
+
 } from "@mui/icons-material";
+import FormDepartamentos from "../../../Components/Departamentos/FormDepartamentos";
+
+
 
 const departamentosData = [
   {
     id: 1,
     nombre: "Recursos Humanos",
-    direccion: "123 Calle Principal",
+
     descripcion: "Departamento encargado de la gestión de personal.",
     telefono: "123-456-7890",
-    imagen:
-      "https://doctor-cv.com/blog/wp-content/uploads/2018/11/p-rrhh.JPG.jpeg",
+    imagen:"https://doctor-cv.com/blog/wp-content/uploads/2018/11/p-rrhh.JPG.jpeg",
     email: "rh@example.com",
     servicios: [
       {
@@ -55,21 +59,19 @@ const departamentosData = [
   {
     id: 2,
     nombre: "Contabilidad",
-    direccion: "456 Calle Principal",
+
     descripcion: "Departamento encargado de la gestión financiera.",
     telefono: "123-456-7890",
-    imagen:
-      "https://www.michaelpage.es/sites/michaelpage.es/files/styles/advice_node_desktop/public/legacy/cfo.jpg.webp?itok=Fkb1opD-",
+    imagen:"https://www.michaelpage.es/sites/michaelpage.es/files/styles/advice_node_desktop/public/legacy/cfo.jpg.webp?itok=Fkb1opD-",
     email: "rh@gestiom",
   },
   {
     id: 3,
     nombre: "Mercadeo",
-    direccion: "789 Calle Principal",
+ 
     descripcion: "Departamento encargado de la gestión de mercadeo.",
     telefono: "123-456-7890",
-    imagen:
-      "https://www.merca20.com/wp-content/uploads/2019/05/mercadotecnia.jpg",
+    imagen:"https://www.merca20.com/wp-content/uploads/2019/05/mercadotecnia.jpg",
     email: "rh@gestiom",
   },
   /*  {
@@ -110,10 +112,12 @@ const departamentosData = [
    },
 */
 ];
+localStorage.setItem('departamentosData', JSON.stringify(departamentosData));
 
 const Departamentos = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [addDepartmentOne, setAddDepartmentOne] = useState(false);
+  const [storedData, setStoredData ] = useState(JSON.parse(localStorage.getItem('departamentosData')));
 
   const defaultDepartmentData = {
     id: 0,
@@ -129,8 +133,14 @@ const Departamentos = () => {
   const [department, setDepartment] = useState(defaultDepartmentData);
 
   const addDepartment = () => {
-    setIsDialogOpen(true);
+
     department.id = departamentosData.length + 1;
+    setAddDepartmentOne(true);
+  };
+
+  const cancelAdd = () => {
+    setAddDepartmentOne(false);
+    setDepartment(defaultDepartmentData);
   };
 
   const editDepartment = (departmentData) => {
@@ -143,9 +153,15 @@ const Departamentos = () => {
     setDepartment(defaultDepartmentData);
   };
 
+  useEffect(() => {
+      setStoredData(JSON.parse(localStorage.getItem('departamentosData')));
+  
+  }, []);
+
   const showDepartments = () => {
-    return departamentosData.map((dep) => (
+    return storedData.map((dep) => (
       <Grid item xs={12} sm={6} md={4} key={dep.id}>
+      
         <Card elevation={5} style={{ borderRadius: "15px" }}>
           <CardMedia
             component="img"
@@ -160,9 +176,6 @@ const Departamentos = () => {
               style={{ fontWeight: "bold" }}
             >
               {dep.nombre}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              <LocationOn /> Dirección: {dep.direccion}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               <Description /> Descripción: {dep.descripcion}
@@ -187,52 +200,67 @@ const Departamentos = () => {
     ));
   };
 
+  
+
+  
+
+
   return (
     <div style={{ background: "#f9f9f9" }}>
-      <Container>
-        <Dialog open={isDialogOpen} onClose={() => setIsDialogOpen(false)}>
-          <DialogTitle>
-            <IconButton color="warning">
-              <WarningAmberOutlined />
-            </IconButton>
-            ¡Advertencia!
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Antes de continuar, deberá configurar su departamento de Recursos
-              Humanos.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => setIsDialogOpen(false)} color="primary">
-              Aceptar
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </Container>
+  
+     
 
       <Container>
-        <Button
-          variant="contained"
-          color="primary"
-          startIcon={<AddCircleOutline />}
-          onClick={addDepartment}
-          style={{ marginBottom: "20px" }}
-        >
-          Agregar Departamento de RH
-        </Button>
-        {isEditing ? (
+
+      {!isEditing && (
+          <Button
+              variant="contained"
+            color="primary"
+            startIcon={<AddCircleOutline />}
+            onClick={addDepartment}
+            style={{ marginBottom: "20px" }}
+          >
+            Agregar Departamento de RH
+          </Button>
+      )}
+       
+        {isEditing   ? (
           <>
-            <IconButton onClick={cancelEdit}>
-              <ArrowBack /> Cancelar edición
-            </IconButton>
-            <h1>Editar departamento</h1>
+
+         
+              
+      
+
+          
+        
+              <Grid container spacing={2}>
+              <Button variant="contained" onClick={cancelEdit}  color="error"><ArrowBack /> Cancelar edición</Button>
+               <FormDepartamentos action="actualizar" data={department} />
+               
+              </Grid>
+     
           </>
-        ) : (
+        ) :  (
           <Grid container spacing={2}>
-            {showDepartments()}
+          
+         { addDepartmentOne ? null : showDepartments()}
+          
           </Grid>
         )}
+
+        {
+          addDepartmentOne ? (
+            <>
+            <Grid container spacing={2}>
+              <Button variant="contained" onClick={cancelAdd}  color="error"><ArrowBack /> Cancelar Registro</Button>
+                <FormDepartamentos action="registrar"  />
+             
+            </Grid>
+            </>
+          ) : null
+        }
+
+        
         <hr />
       </Container>
     </div>
