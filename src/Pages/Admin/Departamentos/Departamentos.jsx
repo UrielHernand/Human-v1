@@ -21,12 +21,7 @@ import {
   Edit,
   Email,
 
-
-
-
-  Phone,
-
-
+  Phone
 } from "@mui/icons-material";
 import FormDepartamentos from "../../../Components/Departamentos/FormDepartamentos";
 
@@ -112,7 +107,7 @@ const departamentosData = [
    },
 */
 ];
-localStorage.setItem('departamentosData', JSON.stringify(departamentosData));
+
 
 const Departamentos = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -152,6 +147,8 @@ const Departamentos = () => {
     setIsEditing(false);
     setDepartment(defaultDepartmentData);
   };
+
+  
 
   useEffect(() => {
       setStoredData(JSON.parse(localStorage.getItem('departamentosData')));

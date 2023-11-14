@@ -56,10 +56,12 @@ const FormDepartamentos = ({ action, data }) => {
     console.log(modo);
 
     if (modo === 'registrar') {
+      console.log('entro')	;
+
       const departamentos = JSON.parse(localStorage.getItem('departamentosData')) ;
-      const nuevoDepartamento = { ...formData, id: Date.now() };
-      const nuevosDepartamentos = [...departamentos, nuevoDepartamento];
-      localStorage.setItem('departamentosData', JSON.stringify(nuevosDepartamentos));
+      const nuevoDepartamento = { ...formData, id: departamentos.length + 1};
+      departamentos.push(nuevoDepartamento);
+      localStorage.setItem('departamentosData', JSON.stringify(departamentos));
     } else if (modo === 'actualizar') {
       const departamentos = JSON.parse(localStorage.getItem('departamentosData'));
       const indexDepartamento = departamentos.findIndex((dep) => dep.id === formData.id);
