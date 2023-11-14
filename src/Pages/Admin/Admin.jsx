@@ -10,6 +10,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Departamentos from "./Departamentos/Departamentos";
 import Reportes from "./Reportes/Reportes";
 import Empleados from "./Empleados/Empleados"
+import RegistroEmpleados from "./RegistroEmpleados/RegitroEmpleados";
 
 export default function Admin() {
   return (
@@ -21,9 +22,11 @@ export default function Admin() {
             <Route path={AdminRoutes.DASHBOARD} element={<Dashboard></Dashboard> }/>
             <Route path={`${AdminRoutes.ADMIN}/*`} element={<h1>Human Gestion </h1> } ></Route>
             <Route path="*" element={<Navigate to={AdminRoutes.DASHBOARD}/>}/> 
-            <Route path={AdminRoutes.EMPLEADOS} element={<Empleados></Empleados> }/>
+            <Route path={AdminRoutes.EMPLEADOS} element={<RegistroEmpleados></RegistroEmpleados> }/>
+            {/* <Route path={AdminRoutes.REGISTROEMPLEADOS} element={<RegistroEmpleados></RegistroEmpleados> }/> */}
             <Route path={AdminRoutes.DEPARTAMENTOS} element={<Departamentos></Departamentos> }/>
             <Route path={AdminRoutes.REPORTES} element={<Reportes></Reportes> }/>
+            
         </Route>
         
       </RoutesWithNotFound>
