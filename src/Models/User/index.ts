@@ -5,6 +5,7 @@ export interface UserInfo { // interface for user info
     phone: string;
     token: string;
     role: string;
+    state: boolean
   
 
     

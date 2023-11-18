@@ -4,15 +4,26 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import { AccountCircle, Description, Email, Image, LocationOn, Phone, RoomService } from "@mui/icons-material";
 import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
+
+
+
+// eslint-disable-next-line react/prop-types
 const FormDepartamentos = ({ action, data }) => {
-  const [modo] = useState(action === 'registrar' ? 'registrar' : 'actualizar');
+  const  Typeaction = {
+    register : 'register',
+    update : 'update',
+  }
+
+  const [modo] = useState(action === Typeaction.register ? 'registrar' : 'actualizar');
   const [formData, setFormData] = useState({
-    nombre: '',
-    descripcion: '',
-    telefono: '',
-    imagen: '',
-    email: '',
-    servicios: '',
+   name : '',
+    description : '',
+  phone : '',
+  email : '',
+  image : '',
+  services : [],
+
+   
   });
 
   useEffect(() => {
@@ -109,6 +120,10 @@ const FormDepartamentos = ({ action, data }) => {
       </form>
     </Box>
   );
+};
+FormDepartamentos.defaultProps = {
+  action: Object.keys({ action: 'registrar' })[0],
+  data: null,
 };
 
 export default FormDepartamentos;
