@@ -31,10 +31,6 @@ import FormDepartamentos from "../../../Components/Departamentos/FormDepartament
 import { getDepartaments } from "../../../Services/Departaments";
 import AlertConfirmation from "../../../Components/Alerts/AlertConfirmation";
 
-
-
-
-
 const Departamentos = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [addDepartmentOne, setAddDepartmentOne] = useState(false);
