@@ -26,13 +26,14 @@ const FormDepartamentos = ({ action, data }) => {
 
   const [modo] = useState(action === Typeaction.register ? 'registrar' : 'actualizar');
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    phone: '',
-    email: '',
-    image: '',
-    services: [],
-    state: true,
+   name : '',
+    description : '',
+  phone : '',
+  email : '',
+  image : '',
+  services : [],
+
+   
   });
 
   useEffect(() => {
