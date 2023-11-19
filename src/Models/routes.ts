@@ -9,7 +9,8 @@ export enum AdminRoutes {
     ANALISIS = 'analisis',
     PERFIL = 'perfil',
     DEPARTAMENTOS = 'departamentos',
-    REGISTROEMPLEADOS = 'registroempleados'
+    REGISTROEMPLEADOS = 'registroempleados',
+   CALENDARIO = 'calendario',
   
 
     }

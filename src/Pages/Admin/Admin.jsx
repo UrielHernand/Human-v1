@@ -9,6 +9,8 @@ import Reportes from "./Reportes/Reportes";
 
 import RegistroEmpleados from "./RegistroEmpleados/RegitroEmpleados";
 
+import Calendar from "./Calendario/Calendario";
+
 export default function Admin() {
   return (
           //my sidebar renderice en todas las rutas de admin
@@ -23,6 +25,7 @@ export default function Admin() {
             {/* <Route path={AdminRoutes.REGISTROEMPLEADOS} element={<RegistroEmpleados></RegistroEmpleados> }/> */}
             <Route path={AdminRoutes.DEPARTAMENTOS} element={<Departamentos></Departamentos> }/>
             <Route path={AdminRoutes.REPORTES} element={<Reportes></Reportes> }/>
+             <Route path={AdminRoutes.CALENDARIO} element={<Calendar></Calendar>}/>
             
         </Route>
         
