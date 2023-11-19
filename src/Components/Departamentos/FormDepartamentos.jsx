@@ -1,60 +1,78 @@
-// ...
+import  { useEffect, useState } from "react";
+import {
+  Button,
+  Grid,
+  TextField,
+  Typography,
+ 
+} from "@mui/material";
+import {
+  AccountCircle,
+  Description,
+  Email,
+  Image,
 
-import { Button, Grid, TextField, Typography } from "@mui/material";
-import { AccountCircle, Description, Email, Image, LocationOn, Phone, RoomService } from "@mui/icons-material";
+  Phone,
+  RoomService,
+} from "@mui/icons-material";
 import { Box } from "@mui/system";
-import { useEffect, useState } from "react";
-
-
 
 // eslint-disable-next-line react/prop-types
 const FormDepartamentos = ({ action, data }) => {
-  const  Typeaction = {
-    register : 'register',
-    update : 'update',
-  }
+  const Typeaction = {
+    register: 'register',
+    update: 'update',
+  };
 
   const [modo] = useState(action === Typeaction.register ? 'registrar' : 'actualizar');
   const [formData, setFormData] = useState({
-   name : '',
-    description : '',
-  phone : '',
-  email : '',
-  image : '',
-  services : [],
-
-   
+    name: '',
+    description: '',
+    phone: '',
+    email: '',
+    image: '',
+    services: [],
+    state: true,
   });
 
   useEffect(() => {
     if (data) {
       setFormData(data);
     }
-  }, [data]);
+  }, [data, setFormData]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+
+    setFormData((prevFormData) => {
+      if (name === 'services') {
+        const updatedServices = value.split(',').map((service) => service.trim());
+        return {
+          ...prevFormData,
+          [name]: updatedServices,
+        };
+      }
+
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
   };
 
   const getStartAdornment = (campo) => {
     switch (campo) {
-      case 'nombre':
+      case 'name':
         return <AccountCircle />;
-      case 'direccion':
-        return <LocationOn />;
-      case 'descripcion':
+      case 'description':
         return <Description />;
-      case 'telefono':
+      case 'phone':
         return <Phone />;
-      case 'imagen':
+      case 'image':
         return <Image />;
       case 'email':
         return <Email />;
-      case 'servicios':
+      case 'services':
         return <RoomService />;
       default:
         return null;
@@ -67,14 +85,14 @@ const FormDepartamentos = ({ action, data }) => {
     console.log(modo);
 
     if (modo === 'registrar') {
-      console.log('entro')	;
+      console.log('entro');
 
-      const departamentos = JSON.parse(localStorage.getItem('departamentosData')) ;
-      const nuevoDepartamento = { ...formData, id: departamentos.length + 1};
+      const departamentos = JSON.parse(localStorage.getItem('departamentosData')) || [];
+      const nuevoDepartamento = { ...formData, id: departamentos.length + 1 };
       departamentos.push(nuevoDepartamento);
       localStorage.setItem('departamentosData', JSON.stringify(departamentos));
     } else if (modo === 'actualizar') {
-      const departamentos = JSON.parse(localStorage.getItem('departamentosData'));
+      const departamentos = JSON.parse(localStorage.getItem('departamentosData')) || [];
       const indexDepartamento = departamentos.findIndex((dep) => dep.id === formData.id);
       if (indexDepartamento !== -1) {
         departamentos[indexDepartamento] = formData;
@@ -83,6 +101,7 @@ const FormDepartamentos = ({ action, data }) => {
     }
     window.location.href = '/admin/departamentos';
   };
+
   return (
     <Box>
       <Typography variant="h4" color="primary">
@@ -109,18 +128,16 @@ const FormDepartamentos = ({ action, data }) => {
             </Grid>
           ))}
           <Grid item xs={12}>
-           
-            <Button type="submit" variant="contained" color="primary" onClick={ handleSubmit} >
+            <Button type="submit" variant="contained" color="primary">
               {modo === 'registrar' ? 'Registrar' : 'Actualizar'}
-              
             </Button>
-        
           </Grid>
         </Grid>
       </form>
     </Box>
   );
 };
+
 FormDepartamentos.defaultProps = {
   action: Object.keys({ action: 'registrar' })[0],
   data: null,

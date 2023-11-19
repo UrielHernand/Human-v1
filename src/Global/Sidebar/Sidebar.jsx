@@ -48,6 +48,13 @@ const sidebarNavItems = [
     to: AdminRoutes.REPORTES,
   },
   {
+    display:'Calendario',
+    icon:<CalendarMonth />,
+    to:AdminRoutes.CALENDARIO,
+    
+  } 
+  ,
+  {
     display: 'Vacaciones',
     icon: <CalendarToday />,
     to: AdminRoutes.VACACIONES,
@@ -67,13 +74,7 @@ const sidebarNavItems = [
     icon: <Assessment />,
     to: AdminRoutes.PAGOS,
   },
-  {
-    display:'Calendario',
-    icon:<CalendarMonth />,
-    to:AdminRoutes.CALENDARIO,
-    
-  }
-  ,
+
   {
     display: 'Configuracion',
     icon: <Settings />,

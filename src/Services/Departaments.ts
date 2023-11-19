@@ -39,10 +39,48 @@ const departamentosData = [
     
   ];
 
-export function getDepartaments() {
-    return fetch ('http://localhost:3000/departaments')
-    .then(response => response.json())
-    .then(response => response)
-    .catch(err => departamentosData);
 
-};
+  function getOrCreateDepartamentosData(): Promise<Array<any>> {
+    return new Promise((resolve) => {
+        let storedData: Array<any> | null = JSON.parse(localStorage.getItem('departamentosData') || 'null');
+
+        if (!storedData) {
+            // If there is nothing in localStorage, set storedData to a default array
+            const defaultData = [
+                {
+                    id: 0,
+                    name: '',
+                    description: '',
+                    phone: '',
+                    email: '',
+                    services: [],
+                    image: '',
+                    state: true
+                }
+                // Add more default objects as needed
+            ];
+
+            // Store the default array in localStorage
+            localStorage.setItem('departamentosData', JSON.stringify(defaultData));
+
+            // Set storedData to defaultData
+            storedData = defaultData;
+        }
+
+        // Resolve with the value of storedData
+        resolve(storedData);
+    });
+}
+
+
+export async function getDepartaments() {
+    try {
+        const response = await fetch('http://localhost:3000/departaments');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        const storedData: Array<any> = await getOrCreateDepartamentosData();
+        const combinedArray = [...departamentosData, ...storedData];
+        return combinedArray;
+    }
+}

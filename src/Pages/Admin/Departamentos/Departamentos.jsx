@@ -138,13 +138,13 @@ const Departamentos = () => {
         console.log(res);
         setStoredData(res);
       });
-  }, [ storedData,]);
+  }, [ ]);
 
    const showDepartments = () => {
     return storedData.map((dep) => (
      
       <Grid item xs={12} sm={6} md={4} key={dep.id}>
-      <Card  elevation={dep.state === true ? 5 : 0} 
+      <Card  elevation={5} 
     sx={{
       borderRadius: '15px',
       height: '100%',
@@ -183,7 +183,7 @@ const Departamentos = () => {
 
     
           <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold', marginBottom: '8px' }}>
-            {dep.name}  {console.log(dep) }
+            {dep.name} 
           </Typography>
           <Typography variant="body2" color="text.secondary" paragraph>
             <Description /> Descripción: {dep.description}
@@ -196,9 +196,9 @@ const Departamentos = () => {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             <Business /> Servicios:
-            {dep.services.map((service, key) => (
-              <Chip key={key} label={service} style={{ margin: '0 4px 4px 0' }} />
-            ))}
+            {dep.services && Array.isArray(dep.services) && dep.services.map((service, key) => (
+    <Chip key={key} label={service} style={{ margin: '0 4px 4px 0' }} />
+))}
           </Typography>
         </CardContent>
         <CardActions sx={{ justifyContent: 'center' }}>
