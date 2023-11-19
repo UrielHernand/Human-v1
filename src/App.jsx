@@ -20,9 +20,11 @@ function App() {
        <Provider store={store}>
         <BrowserRouter>
           <RoutesWithNotFound>
+
             <Route element={<AdminGuard Validation={true} />}>
             
               <Route path={`${AdminRoutes.ADMIN}/*`}   element={<Admin />}></Route>
+               <Route path={`${AdminRoutes.HUMANGESTION}/*`}   element={<Admin />}></Route>
               
             </Route>
           </RoutesWithNotFound>

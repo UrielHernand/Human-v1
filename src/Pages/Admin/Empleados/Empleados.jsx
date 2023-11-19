@@ -73,7 +73,7 @@ const Empleados = () => {
         </Button>
       </div>
       <div className="table">
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} elevation={5}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
