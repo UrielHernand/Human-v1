@@ -293,7 +293,7 @@ const Departamentos = () => {
             <>
             <Grid container spacing={2}>
               <Button variant="contained" onClick={cancelAdd}  color="error"><ArrowBack /> Cancelar Registro</Button>
-                <FormDepartamentos action="register"  />
+                <FormDepartamentos action="register"/>
              
             </Grid>
             </>
