@@ -26,6 +26,15 @@ const empleadosData = [
         departamento: 'Sistemas',
         puesto: 'Desarrollador Junior',
         edad : '28',
+    },
+    {
+        id : 4,
+        name : 'uriel',
+        apellidoPa:'Hernandez',
+        apellidoMa:'Carrera',
+        departamento: 'Sistemas',
+        puesto: 'Gerente',
+        edad: '28',
     }
 ];
 

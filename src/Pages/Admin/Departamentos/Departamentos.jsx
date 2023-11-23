@@ -44,7 +44,7 @@ const Departamentos = () => {
       email : '',
       image : '',
       services : [],
-      state : false
+      state : true
     },
   ]
   

@@ -11,6 +11,7 @@ export enum AdminRoutes {
     DEPARTAMENTOS = 'departamentos',
     REGISTROEMPLEADOS = 'registroempleados',
    CALENDARIO = 'calendario',
+   HUMANGESTION = 'humangestion',
   
 
     }
