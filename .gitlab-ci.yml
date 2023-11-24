@@ -5,27 +5,30 @@ stages:
   - test
   - deploy
 
+before_script:
+  - npm install
+
 build-min-code:
   stage: build
   script:
-    - echo "Compiling the code..."
-    - echo "Compile complete."
-  
+    - npm install
+    - npm run minifier
+
 run-unit-test:
   stage: test
   script:
-   - npm run test
+    - npm run test
 
-pages:
+deploy-staging:
   stage: deploy
   script:
-    - npm install
-    - npm run build
-    - mv dist public  # Ajusta "build" a la carpeta de salida de tu proyecto
-  artifacts:
-    paths:
-      - public
+    - npm run deploy-stage
   only:
-    - master  # Cambia esto si tu rama principal se llama de otra manera
+    - develop
 
-
+deploy-production:
+  stage: deploy
+  script:
+    - npm run deploy-prod
+  only:
+    - master
