@@ -14,7 +14,7 @@ build-min-code:
 run-unit-test:
   stage: test
   script:
-    -npm run test
+   - npm run test
 
 pages:
   stage: deploy
