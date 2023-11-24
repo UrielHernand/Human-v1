@@ -5,14 +5,12 @@ stages:
   - test
   - deploy
 
-before_script:
-  - npm install
 
 build-min-code:
   stage: build
   script:
     - npm install
-    - npm run minifier
+
 
 run-unit-test:
   stage: test
