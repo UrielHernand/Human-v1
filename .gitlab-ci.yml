@@ -1,13 +1,56 @@
+# The Docker image that will be used to build your app
 image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
+  - preparacion
+  - build
   - test
   - deploy
+
+before_script:
+  - npm i
+  - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  - docker info
+
+variables:
+  IMAGE_NAME: "humanGestionApp"
+  CONTAINER_NAME: "humanGestion_Docker"
+
+# Scripts para la generación del entorno de liberación.
+preparacion_job:
+  stage: preparacion
+  script:
+    - echo "Instalando dependencias..."
+    - npm install
+
+build-job:
+  stage: build
+  script:
+    - echo "Construyendo la aplicación..."
+    - npm run build
+    - docker build -t $IMAGE_NAME .
+
+# Scripts de pruebas en el entorno de liberación.
+test-job:
+  stage: test
+  script:
+    - echo "Ejecutando pruebas Docker"
+    - docker run $IMAGE_NAME npm test_app
 
 test-job1:
   stage: test
   script:
     - echo "pruebas"
+    - docker run $IMAGE_NAME npm test_pages
+
+# Scripts para la generación del despliegue
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Desplegando la aplicación..."
+    - docker run -d --name $CONTAINER_NAME -p 8080:80 $IMAGE_NAME
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
 
 pages:
   stage: deploy
