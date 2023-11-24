@@ -1,7 +1,13 @@
 image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
+  - test
   - deploy
+
+test-job1:
+  stage: test
+  script:
+    - echo "pruebas"
 
 pages:
   stage: deploy
