@@ -1,32 +1,16 @@
 image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
-  - build
-  - test
   - deploy
 
-
-build-min-code:
-  stage: build
+pages:
+  stage: deploy
   script:
     - npm install
-
-
-run-unit-test:
-  stage: test
-  script:
-    - npm run test
-
-deploy-staging:
-  stage: deploy
-  script:
-    - npm run deploy-stage
+    - npm run build
+    - mv dist public  # Ajusta "build" a la carpeta de salida de tu proyecto
+  artifacts:
+    paths:
+      - public
   only:
-    - develop
-
-deploy-production:
-  stage: deploy
-  script:
-    - npm run deploy-prod
-  only:
-    - master
+    - master  # Cambia esto si tu rama principal se llama de otra manera
