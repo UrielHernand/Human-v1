@@ -1,7 +1,20 @@
 image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
+  - build
+  - test
   - deploy
+
+build-min-code:
+  stage: build
+  script:
+    -npm install
+    -npm run minifier
+  
+run-unit-test:
+  stage: test
+  script:
+    -npm run test
 
 pages:
   stage: deploy
@@ -14,3 +27,5 @@ pages:
       - public
   only:
     - master  # Cambia esto si tu rama principal se llama de otra manera
+
+
