@@ -8,7 +8,8 @@ stages:
 build-min-code:
   stage: build
   script:
-    -npm install
+    - echo "Compiling the code..."
+    - echo "Compile complete."
   
 run-unit-test:
   stage: test
