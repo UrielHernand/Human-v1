@@ -70,12 +70,12 @@ const Empleados = () => {
       window.location.reload();
   }
 
-  const deleteDepartment = (dep) => {
+/*   const deleteDepartment = (dep) => {
     dep.state = false;
      console.log(dep);
      setData([...data]);
      abrircerrarModalEliminar();
-   };
+   }; */
 
   //  const handleConfirmDelete = () => {
   //   if (departmentToDelete) {

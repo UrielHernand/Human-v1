@@ -3,6 +3,9 @@ image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 stages:
   - deploy
 
+
+
+    
 pages:
   stage: deploy
   script:
