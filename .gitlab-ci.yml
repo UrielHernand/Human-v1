@@ -5,32 +5,29 @@ stages:
   - test
   - deploy
  
-jobs:  
-  preparacion:
-    stage: preparacion
-    script:
-      - npm install
-      - npm run build
-    artifacts:
-      paths:
-        - node_modules
-        - build
+preparacion:
+  stage: preparacion
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - node_modules
+      - build
 
-  test:
-    stage: test
-    script:
-      - npm install
-      - npm run test
-
-  deploy:
-    stage: deploy
-    script:
-      - npm install
-      - npm run build
-      - mv dist public
-    artifacts:
-      paths:
-        - public
-    only:
-      - master
-
+test:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+    
+deploy:
+  stage: deploy
+  script:
+    - npm install
+    - npm run build
+    - mv dist public  # Ajusta "build" a la carpeta de salida de tu proyecto
+  artifacts:
+    paths:
+      - public
+only: -V1-releases-HG
