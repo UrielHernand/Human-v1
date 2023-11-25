@@ -1,11 +1,12 @@
+# The Docker image that will be used to build your app
 image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
+  - preparacion
+  - build
+  - test
   - deploy
 
-
-
-    
 pages:
   stage: deploy
   script:
