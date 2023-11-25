@@ -1,36 +1,36 @@
-# The Docker image that will be used to build your app
-image: node:15  # Puedes ajustar la versión de Node según tus necesidades
+image: node:15
 
 stages:
   - preparacion
   - test
   - deploy
  
-preparacion:
-  stage: preparacion
-  script:
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - node_modules
-      - build
+jobs:  
+  preparacion:
+    stage: preparacion
+    script:
+      - npm install
+      - npm run build
+    artifacts:
+      paths:
+        - node_modules
+        - build
 
-test:
-  stage: test
-  script:
-    - npm install
-    - npm run test
-    
-deploy:
-  stage: deploy
-  script:
-    - npm install
-    - npm run build
-    - mv dist public  # Ajusta "build" a la carpeta de salida de tu proyecto
-  artifacts:
-    paths:
-      - public
-only:
-  - master 
+  test:
+    stage: test
+    script:
+      - npm install
+      - npm run test
+
+  deploy:
+    stage: deploy
+    script:
+      - npm install
+      - npm run build
+      - mv dist public
+    artifacts:
+      paths:
+        - public
+    only:
+      - master
 
