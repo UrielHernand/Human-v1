@@ -3,11 +3,26 @@ image: node:15  # Puedes ajustar la versión de Node según tus necesidades
 
 stages:
   - preparacion
-  - build
   - test
   - deploy
+ 
+preparacion:
+  stage: preparacion
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - node_modules
+      - build
 
-pages:
+test:
+  stage: test
+  script:
+    - npm install
+    - npm run test
+    
+deploy:
   stage: deploy
   script:
     - npm install
@@ -16,5 +31,6 @@ pages:
   artifacts:
     paths:
       - public
-  only:
-    - master  # Cambia esto si tu rama principal se llama de otra manera
+only:
+  - master 
+
