@@ -30,4 +30,4 @@ deploy:
   artifacts:
     paths:
       - public
-only: -V1-releases-HG
+only: -master
