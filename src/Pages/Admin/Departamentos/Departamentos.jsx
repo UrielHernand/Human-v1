@@ -196,9 +196,9 @@ const Departamentos = () => {
     <Chip key={key} label={service} style={{ margin: '0 4px 4px 0' }} />
 ))}
           </Typography>
-        </CardContent>
+        </CardContent >
         <CardActions sx={{ justifyContent: 'center' }}>
-          <IconButton onClick={() => editDepartment(dep) } color="primary" disabled={!dep.state}  >
+          <IconButton onClick={() => editDepartment(dep) } color="primary" disabled={!dep.state}  hidden = {dep.state ? true : false } >
             <Edit />
           </IconButton>
           <IconButton color="error"  onClick={() => {

@@ -17,6 +17,8 @@ import {  FormControl,InputLabel, Input, FormHelperText,
   Grid
 } from "@mui/material";
 import { getEmpleados } from '../../../Services/Empleados';
+import AlertConfirmation from "../../../Components/Alerts/AlertConfirmation";
+
 
 const Empleados = () => {
   const [insertarEmpleado, setInsertarEmpleado] = useState({
@@ -70,19 +72,28 @@ const Empleados = () => {
       window.location.reload();
   }
 
-  const deleteDepartment = (dep) => {
-    dep.state = false;
+  const deleteEmpleado = (dep) => {
+    dep.state = true;
      console.log(dep);
      setData([...data]);
      abrircerrarModalEliminar();
    };
 
-  //  const handleConfirmDelete = () => {
-  //   if (departmentToDelete) {
-  //     deleteDepartment(departmentToDelete);
-  //   }
-  //   setOpenConfirmationAlert(false);
-  // };
+   const [openConfirmationAlert, setOpenConfirmationAlert] = useState(false);
+  const [empleadoToDelete, setEmpleadoToDelete] = useState(null);
+
+
+  const handleConfirmDelete = () => {
+     if (empleadoToDelete) {
+       deleteEmpleado(empleadoToDelete);
+     }
+     setOpenConfirmationAlert(false);
+  }
+
+  const handleDeleteCanceled = () => {
+    setEmpleadoToDelete(null);
+    setOpenConfirmationAlert(false);
+  };
 
   // const handleEnableCanceled = () => {
   //   setDepartmentToEnable(null);
@@ -136,7 +147,9 @@ const Empleados = () => {
               {data.map((row) => (
                 <TableRow
                   key={row.id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0,},
+                  filter: row.state  ? 'blur(3px)': 'none' , // Aplica desenfoque si dep.state es false
+                }}
                 >
                   <TableCell align="right">{row.name}</TableCell>
                   <TableCell align="right">{row.apellidoPa}</TableCell>
@@ -147,18 +160,33 @@ const Empleados = () => {
                   <Button size="small" variant="contained" onClick={seleccionarGestorEditar}>
                     Editar
                   </Button>
-                  <Button className="B" size="small" variant="contained" onClick={seleccionarGestorEliminar}>
+                  <Button className="B" size="small" variant="contained" 
+                  onClick={() => {
+                    setEmpleadoToDelete(row);
+                    setOpenConfirmationAlert(true);
+    
+                  }}
+                 
+                  >
                     Eliminar 
                   </Button>
                   <IconButton>
                     <ControlPointIcon />
                   </IconButton>
                 </TableRow>
+                
               ))}
             </TableBody>
           </Table>
         </TableContainer>
-
+        <AlertConfirmation
+                open={openConfirmationAlert}
+                onClose={handleDeleteCanceled}
+                onConfirm={handleConfirmDelete}
+                title ="Baja de departamento"
+                content="¿Está segur@ que desea eliminar este registro?"
+              
+                />
         <Modal isOpen={modalAgregar}>
           <ModalHeader>Agregar Empleado</ModalHeader>
           <ModalBody>
@@ -309,24 +337,32 @@ const Empleados = () => {
             </div>
           </ModalBody>
         </Modal>
+        {/* {data.map((row) => (
         <Modal isOpen={modalEliminar}>
+        
                 <ModalBody>
                     Se eliminara el siguiente registro, ¿Desea continuar?
                 </ModalBody>
                 <ModalFooter>
                 <button className="btn btn-primary"
-                onClick={()=>abrircerrarModalEliminar(
-                  
-                )}
-                >SI</button>
+                >
+                SI</button>
                 <button className="btn btn-danger"
                 onClick={()=>abrircerrarModalEliminar()}
                 >NO</button>
                 </ModalFooter>
+               
             </Modal>
+            
+            ))} */}
+            
       </div>
     </div>
+    
   );
+
+  
+   
 };
 
 export default Empleados;
