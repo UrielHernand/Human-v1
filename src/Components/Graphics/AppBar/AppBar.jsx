@@ -10,8 +10,27 @@ import Menu from '@mui/material/Menu';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
+import { AdminRoutes } from '../../../Models/routes';
 
-const pages = ['Dashboard', 'Empleados', 'Evaluación', 'Reportes'];
+const pages = [ 
+  {
+  name: 'Empleados',
+  url:AdminRoutes.EMPLEADOS
+}, {
+  name: 'Departamentos',
+  url: AdminRoutes.DEPARTAMENTOS
+}, {
+  name: 'Puestos',
+  url:" /puestos"
+}, {
+  name: 'Vacaciones',
+  url: AdminRoutes.VACACIONES
+}, {
+  name: 'Reportes',
+  url: AdminRoutes.REPORTES
+}];
+
 
 function AppBar1() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -39,14 +58,11 @@ function AppBar1() {
             HR
           </Typography>
           {pages.map((page) => (
-            <Button
-              key={page}
-              style={{ color:'#053987' , fontWeight:'initial', fontSize:'15px'}}
-             
-              onClick={handleCloseNavMenu}
-            >
-              {page}
+           <Link to={page.url} style={{textDecoration:'none', color:'#053987'}} key={Math.random()}>
+            <Button color="inherit" >
+              {page.name}
             </Button>
+            </Link>
           ))}
           <Tooltip title="Configuración">
             <IconButton onClick={handleOpenUserMenu}>
