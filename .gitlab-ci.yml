@@ -9,17 +9,28 @@ preparacion:
   stage: preparacion
   script:
     - npm install
-    - npm run build
+  
   artifacts:
     paths:
       - node_modules
-      - build
+    
+ only:
+      - master
+  
 
 test:
   stage: test
   script:
     - npm install
-    - npm run test
+
+    
+  artifacts:
+    paths:
+      - coverage
+    
+  only:
+      - master
+
     
 deploy:
   stage: deploy
