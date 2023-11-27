@@ -4,34 +4,27 @@ stages:
   - preparacion
   - test
   - deploy
- 
+
 preparacion:
   stage: preparacion
   script:
     - npm install
-  
   artifacts:
     paths:
       - node_modules
-    
- only:
-      - master
-  
+  only:
+    - master
 
 test:
   stage: test
   script:
     - npm install
-
-    
   artifacts:
     paths:
       - coverage
-    
   only:
-      - master
+    - master
 
-    
 deploy:
   stage: deploy
   script:
@@ -41,4 +34,5 @@ deploy:
   artifacts:
     paths:
       - public
-only: -master
+  only:
+    - master
