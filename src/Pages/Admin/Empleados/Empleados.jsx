@@ -72,12 +72,12 @@ const Empleados = () => {
       window.location.reload();
   }
 
-  const deleteEmpleado = (dep) => {
-    dep.state = true;
+  const deleteDepartment = (dep) => {
+    dep.state = false;
      console.log(dep);
      setData([...data]);
      abrircerrarModalEliminar();
-   };
+   }; */
 
    const [openConfirmationAlert, setOpenConfirmationAlert] = useState(false);
   const [empleadoToDelete, setEmpleadoToDelete] = useState(null);
