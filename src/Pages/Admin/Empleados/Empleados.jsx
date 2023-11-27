@@ -77,7 +77,7 @@ const Empleados = () => {
      console.log(dep);
      setData([...data]);
      abrircerrarModalEliminar();
-   }; */
+   }
 
    const [openConfirmationAlert, setOpenConfirmationAlert] = useState(false);
   const [empleadoToDelete, setEmpleadoToDelete] = useState(null);
