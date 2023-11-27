@@ -13,23 +13,33 @@ import Container from '@mui/material/Container';
 import { Link } from 'react-router-dom';
 import { AdminRoutes } from '../../../Models/routes';
 
+
 const pages = [ 
+  {
+    name: 'Dashboard',
+    url: AdminRoutes.DASHBOARD
+  },
   {
   name: 'Empleados',
   url:AdminRoutes.EMPLEADOS
 }, {
   name: 'Departamentos',
   url: AdminRoutes.DEPARTAMENTOS
-}, {
-  name: 'Puestos',
-  url:" /puestos"
-}, {
-  name: 'Vacaciones',
-  url: AdminRoutes.VACACIONES
-}, {
+},  {
   name: 'Reportes',
   url: AdminRoutes.REPORTES
-}];
+
+},
+{ 
+  name:'Calendario',
+  url: AdminRoutes.CALENDARIO
+},
+{
+  name:'Vacaciones',
+  url: AdminRoutes.VACACIONES
+}
+
+];
 
 
 function AppBar1() {

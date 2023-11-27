@@ -15,9 +15,9 @@ import {
   PeopleAltSharp,
   Summarize,
   CalendarToday,
-  Assessment,
+/*   Assessment,
   Settings,
-  AdminPanelSettings,
+  AdminPanelSettings, */
   CorporateFare,
   CalendarMonth,
 } from '@mui/icons-material';
@@ -59,27 +59,7 @@ const sidebarNavItems = [
     icon: <CalendarToday />,
     to: AdminRoutes.VACACIONES,
   },
-  {
-    display: 'Analisis',
-    icon: <Assessment />,
-    to: AdminRoutes.ANALISIS,
-  },
-  {
-    display: 'Usuarios',
-    icon: <AdminPanelSettings />,
-    to: AdminRoutes.USUARIOS,
-  },
-  {
-    display: 'Pagos',
-    icon: <Assessment />,
-    to: AdminRoutes.PAGOS,
-  },
-
-  {
-    display: 'Configuracion',
-    icon: <Settings />,
-    to: AdminRoutes.CONFIGURACION,
-  }
+  
 ];
 
 const Sidebar = () => {

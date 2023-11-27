@@ -108,7 +108,7 @@ const FormDepartamentos = ({ action, data }) => {
         localStorage.setItem('departamentosData', JSON.stringify(departamentos));
       }
     }
-    window.location.reload();
+    window.location.href = '/departamentos';
   };
 
   const handleFileChange = (event) => {
@@ -229,7 +229,33 @@ const FormDepartamentos = ({ action, data }) => {
           helperText="No se puede modificar, solo habilitar o deshabilitar. Por el momento, está habilitado"
         />
       );
-    } else {
+    } 
+    //genere un id y que no se vea en el formulario
+    else if (campo === 'id') {
+      return (
+        <TextField
+          fullWidth
+         
+          name={campo}
+          variant="outlined"
+   
+          value={Math.floor(Math.random() * 1000) + 1}
+          onChange={handleChange}
+          InputProps={{
+            startAdornment: getStartAdornment(campo),
+          }}
+          sx={{ mt: 2 }}
+          type="list"
+          disabled={true}
+          helperText="No se puede modificar, solo habilitar o deshabilitar. Por el momento, está habilitado"
+          hidden={true}
+        />
+      );
+    }
+
+    
+    
+    else {
       return (
         <TextField
           fullWidth

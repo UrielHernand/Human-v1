@@ -11,7 +11,7 @@ import './Empleados.css'
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import IconButton from '@mui/material/IconButton';
 import  {useState, useEffect} from 'react';
-import {Modal, ModalBody, ModalHeader, ModalFooter} from 'reactstrap';
+import {Modal, ModalBody, ModalHeader, } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {  FormControl,InputLabel, Input, FormHelperText, 
   Grid
@@ -72,7 +72,7 @@ const Empleados = () => {
       window.location.reload();
   }
 
-  const deleteDepartment = (dep) => {
+  const deleteEmpleado = (dep) => {
     dep.state = false;
      console.log(dep);
      setData([...data]);
@@ -164,8 +164,10 @@ const Empleados = () => {
                   onClick={() => {
                     setEmpleadoToDelete(row);
                     setOpenConfirmationAlert(true);
+                    seleccionarGestorEliminar();
     
                   }}
+
                  
                   >
                     Eliminar 

@@ -10,13 +10,13 @@ const empleadosData = [
         
     },
     {
-        id: 2,
-        name : 'Miguel Fernando',
-        apellidoPa:'Rosales',
-        apellidoMa:'Contreras',
+        id : 2,
+        name : 'uriel',
+        apellidoPa:'Hernandez',
+        apellidoMa:'Carrera',
         departamento: 'Sistemas',
-        puesto: 'Desarrollador Junior',
-        edad : '28',
+        puesto: 'Gerente',
+        edad: '28',
     },
     {
         id: 3,
@@ -27,15 +27,7 @@ const empleadosData = [
         puesto: 'Desarrollador Junior',
         edad : '28',
     },
-    {
-        id : 4,
-        name : 'uriel',
-        apellidoPa:'Hernandez',
-        apellidoMa:'Carrera',
-        departamento: 'Sistemas',
-        puesto: 'Gerente',
-        edad: '28',
-    }
+  
 ];
 
 

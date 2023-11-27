@@ -198,7 +198,7 @@ const Departamentos = () => {
           </Typography>
         </CardContent >
         <CardActions sx={{ justifyContent: 'center' }}>
-          <IconButton onClick={() => editDepartment(dep) } color="primary" disabled={!dep.state}  hidden = {dep.state ? true : false } >
+          <IconButton onClick={() => editDepartment(dep) } color="primary" disabled={!dep.state}   >
             <Edit />
           </IconButton>
           <IconButton color="error"  onClick={() => {

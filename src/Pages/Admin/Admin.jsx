@@ -9,6 +9,7 @@ import Reportes from "./Reportes/Reportes";
 import Empleados from "./Empleados/Empleados";
 
 import Calendar from "./Calendario/Calendario";
+import Vacaciones from "./Vacaciones/Vacaciones";
 
 export default function Admin() {
   return (
@@ -25,7 +26,8 @@ export default function Admin() {
             <Route path={AdminRoutes.DEPARTAMENTOS} element={<Departamentos></Departamentos> }/>
             <Route path={AdminRoutes.REPORTES} element={<Reportes></Reportes> }/>
              <Route path={AdminRoutes.CALENDARIO} element={<Calendar></Calendar>}/>
-            
+              <Route path={AdminRoutes.VACACIONES} element={ <Vacaciones></Vacaciones> }/>
+              
         </Route>
         
       </RoutesWithNotFound>
