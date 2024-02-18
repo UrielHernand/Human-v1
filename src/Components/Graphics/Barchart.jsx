@@ -1,5 +1,6 @@
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Grid } from '@mui/material';
 
 // Registra las escalas y elementos necesarios
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -37,9 +38,9 @@ const data = {
 
 const BarChart = () => {
   return (
-    <div style={{ height: '300px' }}>
-      <Bar data={data} options={options} />
-    </div>
+    <Grid item xs={12} md={12}  style={{width:'auto'}}>
+      <Bar data={data} options={options}  />
+    </Grid>
   );
 };
 

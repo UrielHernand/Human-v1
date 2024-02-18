@@ -128,7 +128,9 @@ getEmpleados().then((response) => {
 
       {/* BOTÓN PARA AGREGAR VACACIONES */}
       <Box mt={2}>
-        <Button variant="contained" onClick={handleAddVacationClick}>
+      
+
+        <Button variant="contained" onClick={handleAddVacationClick} >
           Agregar Vacación
         </Button>
       </Box>

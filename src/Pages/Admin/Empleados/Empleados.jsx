@@ -8,8 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 import './Empleados.css'
-import ControlPointIcon from '@mui/icons-material/ControlPoint';
-import IconButton from '@mui/material/IconButton';
+
+
 import  {useState, useEffect} from 'react';
 import {Modal, ModalBody, ModalHeader, } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,6 +18,9 @@ import {  FormControl,InputLabel, Input, FormHelperText,
 } from "@mui/material";
 import { getEmpleados } from '../../../Services/Empleados';
 import AlertConfirmation from "../../../Components/Alerts/AlertConfirmation";
+import { Add, Contacts, Delete, Edit } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
+import { AdminRoutes } from '../../../Models/routes';
 
 
 const Empleados = () => {
@@ -124,63 +127,91 @@ const Empleados = () => {
   };
   return (
     <div>
+      <div className="title">
+        <h3>Empleados Totales</h3>
+      </div>
       <div className="button">
-        <Button variant="contained" onClick={seleccionarGestor}>
+      <Button variant="contained" onClick={seleccionarGestor} size='large' startIcon={<Add></Add>}>
           Agregar
+       
         </Button>
       </div>
       <div className="table">
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">Nombre</TableCell>
-                <TableCell align="right">Apellido Paterno</TableCell>
-                <TableCell align="right">Apellido Materno</TableCell>
-                <TableCell align="right">Departamento</TableCell>
-                <TableCell align="right">Puesto</TableCell>
-                <TableCell align="right">Edad</TableCell>
-                <TableCell align="center">Actions&nbsp;(g)</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row) => (
-                <TableRow
-                  key={row.id}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0,},
-                  filter: row.state  ? 'blur(3px)': 'none' , // Aplica desenfoque si dep.state es false
-                }}
-                >
-                  <TableCell align="right">{row.name}</TableCell>
-                  <TableCell align="right">{row.apellidoPa}</TableCell>
-                  <TableCell align="right">{row.apellidoMa}</TableCell>
-                  <TableCell align="right">{row.departamento}</TableCell>
-                  <TableCell align="right">{row.puesto}</TableCell>
-                  <TableCell align="right">{row.edad}</TableCell>
-                  <Button size="small" variant="contained" onClick={seleccionarGestorEditar}>
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell align="right">Nombre</TableCell>
+            <TableCell align="right">Apellido Paterno</TableCell>
+            <TableCell align="right">Apellido Materno</TableCell>
+            <TableCell align="right">Departamento</TableCell>
+            <TableCell align="right">Puesto</TableCell>
+            <TableCell align="right">Edad</TableCell>
+            <TableCell align="center">Telefono</TableCell>
+            <TableCell align="center">Correo</TableCell>
+            <TableCell align="center">Acciones </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <TableRow
+              key={row.id}
+              sx={{
+                '&:last-child td, &:last-child th': { border: 0 },
+                filter: row.state ? 'blur(3px)' : 'none', // Apply blur if dep.state is false
+              }}
+            >
+              <TableCell align="right">{row.name}</TableCell>
+              <TableCell align="right">{row.apellidoPa}</TableCell>
+              <TableCell align="right">{row.apellidoMa}</TableCell>
+              <TableCell align="right">{row.departamento}</TableCell>
+              <TableCell align="right">{row.puesto}</TableCell>
+              <TableCell align="right">{row.edad}</TableCell>
+              <TableCell align="center">{row.telefono}</TableCell>
+              <TableCell align="center">{row.email}</TableCell>
+              <TableCell align="center">
+                  <Button
+                    size="small"
+                    variant="contained"
+                    startIcon={<Edit />}
+                    onClick={seleccionarGestorEditar}
+                    style={{ marginRight: '2px' }}
+                  >
                     Editar
                   </Button>
-                  <Button className="B" size="small" variant="contained" 
-                  onClick={() => {
-                    setEmpleadoToDelete(row);
-                    setOpenConfirmationAlert(true);
-                    seleccionarGestorEliminar();
-    
-                  }}
 
-                 
+                  <Button
+                  
+                    size="small"
+                    variant="contained"
+                    startIcon={<Delete />}
+                    onClick={() => {
+                      setEmpleadoToDelete(row);
+                      setOpenConfirmationAlert(true);
+                      seleccionarGestorEliminar();
+                    }}
+                    style={{ backgroundColor: '#f44336', color: '#fff', marginRight: '2px' }}
                   >
-                    Eliminar 
+                    Eliminar
                   </Button>
-                  <IconButton>
-                    <ControlPointIcon />
-                  </IconButton>
-                </TableRow>
-                
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+                  <Link to="informacionempleado" style={{textDecoration: 'none'}}>
+                  <Button
+                    size="small"
+                    variant="contained"
+                    startIcon={<Contacts />}
+                    
+                    style={{ backgroundColor: '#4caf50', color: '#fff' , margin:'7px 7px 2px'  }}
+                  >
+                    Ver Información
+                  </Button>
+                  </Link>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
         <AlertConfirmation
                 open={openConfirmationAlert}
                 onClose={handleDeleteCanceled}

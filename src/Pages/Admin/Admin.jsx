@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Departamentos from "./Departamentos/Departamentos";
 import Reportes from "./Reportes/Reportes";
 import Empleados from "./Empleados/Empleados";
+import InformacionGneral from "./Empleados/InformacionGeneral/";
 
 import Calendar from "./Calendario/Calendario";
 import Vacaciones from "./Vacaciones/Vacaciones";
@@ -27,6 +28,7 @@ export default function Admin() {
             <Route path={AdminRoutes.REPORTES} element={<Reportes></Reportes> }/>
              <Route path={AdminRoutes.CALENDARIO} element={<Calendar></Calendar>}/>
               <Route path={AdminRoutes.VACACIONES} element={ <Vacaciones></Vacaciones> }/>
+              <Route path={AdminRoutes.INFORMACIONEMPLEADO} element={ <InformacionGneral/>}> </Route>
               
         </Route>
         

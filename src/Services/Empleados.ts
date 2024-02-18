@@ -7,6 +7,9 @@ const empleadosData = [
         departamento: 'Sistemas',
         puesto: 'Desarrollador Junior',
         edad : '28',
+        telefono: '1234567890',
+        email: '@gmail.com',
+
         
     },
     {
@@ -17,6 +20,9 @@ const empleadosData = [
         departamento: 'Sistemas',
         puesto: 'Gerente',
         edad: '28',
+        telefono: '1234567890',
+        email: '@gmail.com',
+
     },
     {
         id: 3,
@@ -26,6 +32,8 @@ const empleadosData = [
         departamento: 'Sistemas',
         puesto: 'Desarrollador Junior',
         edad : '28',
+        telefono: '1234567890',
+        email: '@gmail.com',
     },
   
 ];

@@ -1,0 +1,35 @@
+.card-carousel {
+    display: flex;
+    overflow: hidden;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-card {
+    flex: 0 0 auto;
+    margin-right: 16px; /* Adjust the margin as needed */
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    border-radius: 50%;
+  }
+  
+  .arrow-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: #000;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .arrow-button:hover {
+    color: #333; /* Change color on hover */
+  }
+  

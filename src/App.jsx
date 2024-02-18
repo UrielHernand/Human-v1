@@ -25,6 +25,7 @@ function App() {
             
               <Route path={`${AdminRoutes.ADMIN}/*`}   element={<Admin />}></Route>
                <Route path={`${AdminRoutes.HUMANGESTION}/*`}   element={<Admin />}></Route>
+               
               
             </Route>
           </RoutesWithNotFound>

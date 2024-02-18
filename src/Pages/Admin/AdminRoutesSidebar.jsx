@@ -14,11 +14,11 @@ const Sidebar = lazy(() => import('../../Global/Sidebar/Sidebar'));
 
 const styles = {
   container: {
-    flexGrow: 1,
+    flexGrow: 2,
   },
   sidebar: {
     width: '5%', 
-    marginLeft: '10px',
+    marginLeft: '110px',
 
   },
   content: {
@@ -44,10 +44,10 @@ export const AdminRoutesSidebar = () =>
 
   return (
     <Grid container style={styles.container}>
-      <Grid item xs={2} sm={2} md={1.5}  style={styles.sidebar} >
+      <Grid item xs={1} sm={1} md={1}  style={styles.sidebar} >
         <Sidebar />
       </Grid>
-      <Grid item  sm={12} md={11.5} m style={styles.content}>
+      <Grid item  sm={12} md={11} style={styles.content}>
         <AppBar1 />
         <Outlet />
       </Grid>

@@ -19,6 +19,7 @@ class PrintableTable extends Component<PrintableTableProps> {
     return (
       <Box alignItems="center">
         <Button
+        
           variant="outlined"
           color="primary"
           startIcon={<PrintIcon />} // Agrega el icono de impresión
